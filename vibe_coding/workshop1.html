@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vibe Coding mit Claude Code — Workshop 1</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/reveal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/theme/black.css" id="theme" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/plugin/highlight/monokai.css" />
+
+<style>
+  :root {
+    --accent: #3ecfc4;
+    --warn: #ff6b5b;
+    --caution: #ffa94d;
+    --hands-on: #3ecf6e;
+    --fact: #bbb;
+  }
+  .reveal { font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .reveal h1, .reveal h2, .reveal h3 { color: var(--accent); font-weight: 700; }
+  .reveal h1 { font-size: 1.9em; }
+  .reveal h2 { font-size: 1.5em; }
+  .reveal section { text-align: left; }
+  .reveal section.center-slide { text-align: center; }
+  .reveal ul, .reveal ol { display: block; }
+  .reveal table { font-size: 0.75em; margin: 0.5em 0; }
+  .reveal table th { color: var(--accent); }
+  .reveal pre code { font-size: 0.6em; line-height: 1.3; max-height: 480px; }
+  .reveal .subtitle { color: #bbb; font-size: 0.7em; font-weight: 400; }
+  .block-tag {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.42em;
+    color: #999;
+    margin-bottom: 0.6em;
+  }
+  .callout {
+    border-left: 6px solid #999;
+    background: #2a2a2a;
+    padding: 0.4em 0.8em;
+    margin: 0.5em 0;
+    font-size: 0.75em;
+  }
+  .callout .label {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 0.75em;
+    display: block;
+    margin-bottom: 0.2em;
+  }
+  .callout-warn { border-color: var(--warn); background: #3a2321; }
+  .callout-warn .label { color: var(--warn); }
+  .callout-caution { border-color: var(--caution); background: #3a2e1f; }
+  .callout-caution .label { color: var(--caution); }
+  .callout-info { border-color: var(--accent); background: #1c2f2e; }
+  .callout-info .label { color: var(--accent); }
+  .callout-hands-on { border-color: var(--hands-on); background: #1c2f22; }
+  .callout-hands-on .label { color: var(--hands-on); }
+  .callout-fact { border-color: var(--fact); background: #2a2a2a; }
+  .callout-fact .label { color: var(--fact); }
+  .diagram-placeholder {
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 1.2em;
+    text-align: center;
+    color: #999;
+    font-size: 0.6em;
+    margin: 0.6em 0;
+  }
+  .big-stat { font-size: 1.6em; color: var(--warn); font-weight: 700; }
+  .cover-title { font-size: 2.1em; }
+  .cover-sub { font-size: 1.1em; color: #bbb; margin-top: 0.3em; }
+  .cover-meta { font-size: 0.6em; color: #999; margin-top: 2em; }
+  .agenda-list li { margin-bottom: 0.35em; }
+  .agenda-list .time { color: #999; font-size: 0.75em; }
+  .site-footer {
+    position: fixed;
+    bottom: 6px;
+    left: 14px;
+    font-size: 11px;
+    color: #aaa;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .source-note { font-size: 0.5em; color: #999; margin-top: 1em; }
+  .source-note a { color: #888; }
+</style>
+</head>
+<body>
+
+<div class="site-footer">Workshop 1 · Vibe Coding mit Claude Code</div>
+
+<div class="reveal">
+<div class="slides">
+
+  <!-- ================= BLOCK 1 ================= -->
+  <section>
+
+    <section class="center-slide" data-transition="fade">
+      <p class="cover-title"><strong>Vibe Coding mit Claude Code</strong></p>
+      <p class="cover-sub">Workshop 1 für Einsteiger:innen</p>
+      <p class="cover-meta">[Datum] · [Presenter]</p>
+      <aside class="notes">
+        Zielzeit: 0:30. Kurz begrüßen, dann direkt zur Agenda.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Agenda — 92 Minuten</h2>
+      <ol class="agenda-list">
+        <li>Einstieg: Vibe Coding &amp; Harness <span class="time">(11')</span></li>
+        <li>Sicherheit: Konfiguration &amp; Daten <span class="time">(22')</span></li>
+        <li>Skills am Beispiel Webdesign <span class="time">(14')</span></li>
+        <li>Die Rolle von CLAUDE.md <span class="time">(10')</span></li>
+        <li>Praxisteil: Web-Spiel bauen <span class="time">(30')</span></li>
+        <li>Abschluss &amp; Ausblick <span class="time">(5')</span></li>
+      </ol>
+      <aside class="notes">
+        Zielzeit: 0:45. Grobe Ablaufübersicht der 92 Minuten, kurz durchgehen — nicht im Detail erklären, kommt alles noch.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Kurz vorstellen</h2>
+      <ul>
+        <li>Name</li>
+        <li>Ein Satz: "Was hoffst du heute mitzunehmen?"</li>
+      </ul>
+      <div class="callout callout-info">
+        <span class="label">Hinweis</span>
+        Bei mehr als 12 Teilnehmenden: 10 Sek./Person strikt, oder 2er-Murmelrunde statt Plenum.
+      </div>
+      <aside class="notes">
+        Zielzeit: 3:30. Kurze Vorstellungsrunde: Name + ein Satz ("Was hoffst du heute mitzunehmen?" oder alternativ "Programmiererfahrung: ja/nein").
+        Zweiter Zweck: gibt der Moderation ein Bild der Vorerfahrung in der Gruppe (Risiko "heterogene Vorkenntnisse" im Blick behalten).
+        Skalierungshinweis bei großen Gruppen wie im Callout.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Was ist "Vibe Coding"?</h2>
+      <p>In natürlicher Sprache mit einem LLM Software bauen — statt Zeile für Zeile selbst zu tippen.</p>
+      <aside class="notes">Zielzeit: 1:15. Kurzdefinition, keine Diskussion nötig, direkt weiter zum Harness-Konzept.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Was ist ein Harness?</h2>
+      <p><strong>LLM = Motor.</strong> <strong>Harness = alles drumherum</strong>, das daraus ein steuerbares Fahrzeug macht:</p>
+      <ul>
+        <li>Permissions</li>
+        <li>Context</li>
+        <li>Tools</li>
+        <li>CLAUDE.md</li>
+      </ul>
+      <aside class="notes">
+        Zielzeit: 2:15. Analogie: Das Sprachmodell ist der "Motor", der Harness ist alles drumherum, das aus dem Motor ein sicheres, steuerbares Fahrzeug macht.
+        Kernidee: Claude Code ist kein autonomer Agent im luftleeren Raum, sondern deterministischer Code + LLM-Schritte, eng geführt durch den Harness.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Kernsatz</h2>
+      <blockquote>
+        „Claude Code ist deterministischer Code + gezielt platzierte LLM-Schritte — kein freier Agent im luftleeren Raum."
+      </blockquote>
+      <p class="source-note">Anthropic, <em>Building Effective Agents</em> — <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">anthropic.com/engineering/building-effective-agents</a></p>
+      <aside class="notes">Zielzeit: 1:45. Diesen Satz ruhig zweimal sagen — er ist die Brücke zu Block 2 (Sicherheit ist Teil des Harness, nicht Bonus).</aside>
+    </section>
+
+    <section class="center-slide">
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Bevor wir bauen, sichern wir ab.</h2>
+      <aside class="notes">Zielzeit: 0:30. Kurze Überleitung zu Block 2.</aside>
+    </section>
+
+  </section>
+
+  <!-- ================= BLOCK 2 ================= -->
+  <section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Offizieller Status an unserer Institution</h2>
+      <p><strong>Claude &amp; Claude Code:</strong></p>
+      <div class="callout callout-caution">
+        <span class="label">Status</span>
+        ⏳ in Prüfung — geplante Bereitstellung: tbd. Kein von der IT freigegebenes Standardtool.
+      </div>
+      <p>Heutige Nutzung = Eigenverantwortung / Pilot, nicht offizieller Betrieb.</p>
+      <aside class="notes">
+        Zielzeit: 1:00. Sachlich, ohne Dramatik vortragen. Dies ist der Auftakt des Sicherheitsblocks — bewusst vor der Technik, nicht danach.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Was darf überhaupt rein?</h2>
+      <div class="callout callout-warn">
+        <span class="label">Kernregel</span>
+        Nur <strong>öffentliche Daten</strong> — Claude/Claude Code läuft als Cloud-Dienst weltweit.
+        Von der Bibliothek <strong>lizenzierte E-Ressourcen</strong> (Journale, E-Books) dürfen <strong>niemals</strong> in Cloud-KI.
+      </div>
+      <p>Dafür kommen nur geschlossene/lokale bzw. On-Premise-Systeme in Frage — und selbst die nur bedingt.</p>
+      <aside class="notes">
+        Zielzeit: 1:30. Kernregel: nur öffentliche Daten, weil Claude/Claude Code als Cloud-Dienst weltweit läuft (Daten verlassen die Institution).
+        Speziell wichtig: von der Bibliothek lizenzierte E-Ressourcen dürfen niemals in Cloud-KI wie Claude — dafür kommen nur geschlossene/lokale bzw.
+        On-Premise-Systeme in Frage, und selbst die nur bedingt (Mengenlimits, kein Drittzugriff, vorherige Rücksprache mit der Bibliothek).
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Was darf überhaupt rein? — Beispiele</h2>
+      <table>
+        <tr><th>Beispiel</th><th>OK?</th></tr>
+        <tr><td>Ein Snake-Spiel bauen</td><td>✅ unproblematisch</td></tr>
+        <tr><td>Lizenzierten Fachartikel zusammenfassen lassen</td><td>❌ nicht ohne Rücksprache</td></tr>
+      </table>
+      <aside class="notes">
+        Zielzeit: 1:00. Zwei kurze Beispiele zur Einordnung, direkt an die Kernregel der Vorfolie anschließen.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Ein Praxis-Fakt zum Nachdenken</h2>
+      <p>Ein Praktiker liess das offizielle Security-Plugin <strong>2 Monate</strong> laufen und alle <strong>17.385</strong> Log-Zeilen ausgewertet.</p>
+      <p>Von <strong>25 Detektionsregeln</strong> hat in dieser Zeit …</p>
+      <aside class="notes">
+        Zielzeit: 1:00. Setup der Anekdote, Spannung aufbauen vor der Pointe auf der nächsten Folie.
+      </aside>
+    </section>
+
+    <section class="center-slide">
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <p class="big-stat">… nur EINE einzige reagiert.</p>
+      <p>(24 blieben komplett stumm)</p>
+      <div class="callout callout-fact">
+        <span class="label">Fakt, ohne Quellenlink</span>
+        Bewusst als unverlinkte Anekdote präsentiert — der Punkt zählt, nicht die Quelle.
+      </div>
+      <aside class="notes">
+        Zielzeit: 0:30. Pointe: Das Plugin sieht nur, WAS Claude schreibt, nicht WELCHE Dateien lesbar sind oder WOHIN Daten gehen.
+        Motiviert die nächsten Folien. Bewusste Entscheidung: kein Link zur Quelle (Entscheidung 2026-07-30) — falls nach der Quelle gefragt wird,
+        freundlich abwinken: "das ist hier als Erfahrungswert gemeint, nicht als zitierfähige Studie".
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Die 4 Verteidigungsebenen</h2>
+      <ol>
+        <li><strong>Sandbox</strong> (immer aktiv)</li>
+        <li><strong>Permissions</strong> (immer aktiv) ← heutiger Fokus</li>
+        <li>Scan (Beta, kostenpflichtig — nicht heute)</li>
+        <li>Plugin (das war die letzte Folie!)</li>
+      </ol>
+      <div class="callout callout-info">
+        <span class="label">Pointe</span>
+        Ebene 4 allein reicht nicht — deshalb heute Fokus auf Ebene 1 + 2.
+      </div>
+      <aside class="notes">
+        Zielzeit: 1:15. Kurze Landkarte, Pointe direkt aus der Vorfolie weitergeführt. Ebene 3 (Scan) nur als Name erwähnen
+        (Beta, kostenpflichtig, nicht Workshop-Thema).
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Ebene 1: Sandbox</h2>
+      <pre><code class="language-bash">/sandbox</code></pre>
+      <p>Ein Befehl → OS-Isolation für Dateien &amp; Netzwerk.</p>
+      <p>macOS: keine Zusatzinstallation nötig. Linux/WSL2: <code>bubblewrap</code> + <code>socat</code> nötig. Natives Windows: nicht unterstützt (nur über WSL2).</p>
+      <div class="callout callout-info"><span class="label">Tipp</span> Lohnt sich — probiert's zuhause aus.</div>
+      <aside class="notes">Zielzeit: 1:15. Kurz zeigen, nicht vertiefen. macOS läuft sofort (Seatbelt eingebaut); Linux/WSL2 braucht `bubblewrap` + `socat` per Paketmanager; natives Windows wird nicht unterstützt, nur via WSL2.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Ebene 2: Permissions — die 3 Stufen</h2>
+      <div style="max-width: 620px; margin: 0.8em auto;">
+        <svg viewBox="0 0 760 280" style="width:100%; height:auto;">
+          <defs>
+            <marker id="a-neutral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#0f6e6e" />
+            </marker>
+            <marker id="a-deny" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c0392b" />
+            </marker>
+            <marker id="a-ask" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#e67e22" />
+            </marker>
+            <marker id="a-allow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#1e8449" />
+            </marker>
+          </defs>
+
+          <rect x="20" y="110" width="150" height="60" rx="10" fill="#0f6e6e" />
+          <text x="95" y="140" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">Tool-Call</text>
+
+          <line x1="170" y1="140" x2="238" y2="140" stroke="#0f6e6e" stroke-width="2" marker-end="url(#a-neutral)" />
+
+          <polygon points="330,80 420,140 330,200 240,140" fill="#eaf5f5" stroke="#0f6e6e" stroke-width="2" />
+          <text x="330" y="140" font-size="16" font-weight="700" fill="#0f6e6e" text-anchor="middle" dominant-baseline="middle">Check</text>
+
+          <line x1="420" y1="140" x2="518" y2="48" stroke="#c0392b" stroke-width="2" marker-end="url(#a-deny)" />
+          <text x="450" y="82" font-size="13" font-weight="700" fill="#c0392b">deny</text>
+
+          <line x1="420" y1="140" x2="518" y2="140" stroke="#e67e22" stroke-width="2" marker-end="url(#a-ask)" />
+          <text x="455" y="132" font-size="13" font-weight="700" fill="#e67e22">ask</text>
+
+          <line x1="420" y1="140" x2="518" y2="232" stroke="#1e8449" stroke-width="2" marker-end="url(#a-allow)" />
+          <text x="448" y="212" font-size="13" font-weight="700" fill="#1e8449">allow</text>
+
+          <rect x="520" y="20" width="220" height="56" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="1.5" />
+          <text x="630" y="48" font-size="16" font-weight="700" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">❌ Blockiert</text>
+
+          <rect x="520" y="112" width="220" height="56" rx="10" fill="#fdf3e7" stroke="#e67e22" stroke-width="1.5" />
+          <text x="630" y="140" font-size="16" font-weight="700" fill="#e67e22" text-anchor="middle" dominant-baseline="middle">🗨️ Rückfrage</text>
+
+          <rect x="520" y="204" width="220" height="56" rx="10" fill="#eaf6ee" stroke="#1e8449" stroke-width="1.5" />
+          <text x="630" y="232" font-size="16" font-weight="700" fill="#1e8449" text-anchor="middle" dominant-baseline="middle">✅ Ausführung</text>
+        </svg>
+      </div>
+      <aside class="notes">Zielzeit: 2:00. deny/ask/allow anhand der Pipeline-Grafik erklären: Tool-Call → Check → einer von drei Wegen.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>🛠 Praxisteil A</h2>
+      <p>Öffnet <code>.claude/settings.json</code> (projektlokal — für alle Projekte gilt stattdessen <code>~/.claude/settings.json</code>) und ergänzt:</p>
+      <pre><code class="language-json">{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}</code></pre>
+      <div class="callout callout-hands-on">
+        <span class="label">Testen — aber sicher</span>
+        Blockiert es wirklich? Nur mit einem Wegwerf-Ordner ausprobieren, nicht mit echten Projektdateien — falls die Regel doch nicht greift, soll nichts Echtes kaputtgehen.
+      </div>
+      <aside class="notes">
+        Zielzeit: 4:00. Gemeinsam settings.json öffnen (kurz projektlokal vs. global erwähnen), die deny-Regeln eintragen.
+        Vor dem Testen gemeinsam einen Wegwerf-Ordner anlegen (z. B. `mkdir /tmp/vibetest`) und NUR darauf `rm -rf` ausprobieren —
+        nie auf echten Projekt-/Repo-Pfaden, falls die Regel doch nicht greift.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2><code>.env</code> &amp; Credentials</h2>
+      <pre><code class="language-json">{
+  "permissions": {
+    "deny": ["Read(./.env)"]
+  }
+}</code></pre>
+      <div class="callout callout-caution">
+        <span class="label">Bekannter Bug</span>
+        <code>permissions.deny</code> greift in Einzelfällen nicht —
+        <a href="https://github.com/anthropics/claude-code/issues/11544" target="_blank" rel="noopener">GitHub Issue #11544</a>
+      </div>
+      <p>Genau für solche Lücken gibt es eine zusätzliche Absicherungsebene: <strong>Hooks</strong> (nächste Folie).</p>
+      <aside class="notes">
+        Zielzeit: 1:30. Kurzer Exkurs: Read(./.env) in die deny-Liste, warum Berechtigungsregeln allein nicht genügen. Bewusst als Cliffhanger enden: "was macht man gegen so eine Lücke?" → Überleitung zu Hooks.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Hooks — die Versicherung dahinter</h2>
+      <p>Mächtiger als reines Pattern-Matching — greift auch dort, wo <code>permissions.deny</code> gerade eben eine Lücke hatte.</p>
+      <p>Beispiel: ein Hook könnte zusätzlich verhindern, dass <code>.env</code> versehentlich per <code>git add</code>/<code>commit</code> ins Repo gelangt.</p>
+      <p><em>(Keine eigene Hook-Programmierung heute)</em></p>
+      <aside class="notes">Zielzeit: 1:00. Direkt an den Bug aus der Vorfolie anknüpfen: "genau für Fälle, wo eine einfache Regel durchrutscht, gibt's Hooks als zusätzliche Prüfebene" — das macht in einem Satz klar, warum Hooks mächtiger sind. Das Git-Beispiel kurz anreißen (nicht vorführen) — liefert später den Anker für "Hooks als Bonus" im Recap.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>chmod 600 — was es wirklich schützt</h2>
+      <p><strong>Robusterer Schutz:</strong> Secrets gar nicht in eine für Claude sichtbare Datei legen → Shell-Profil oder OS-Keychain statt <code>.env</code> im Projektordner.</p>
+      <aside class="notes">
+        Zielzeit: 2:15. Die chmod-Klarstellung ist wichtig und wurde bewusst korrigiert (vorherige Annahme "chmod = Doppelschutz" war falsch) —
+        Claude Code läuft als dieselbe Nutzerkennung wie du, chmod 600 hält andere OS-Accounts fern, nicht Claude Code selbst.
+        Zusatz für Publikum ohne Programmiererfahrung, falls die Frage kommt "dann sieht Claude das ja trotzdem?": Ja, im Prinzip schon —
+        wenn Claude Code die Shell-Profil-Datei gezielt öffnet oder einen Befehl wie "env" ausführt, sieht es das Secret trotzdem im Klartext.
+        Der Schutz liegt nicht darin, dass es unsichtbar wird, sondern darin, dass es außerhalb des Projektordners liegt und beim normalen
+        "Code lesen/durchsuchen" nicht zufällig mit aufgemacht wird — anders als eine .env-Datei mitten im Projekt.
+        Beim OS-Keychain ist der Unterschied größer: das Secret liegt dort gar nicht als lesbare Datei, sondern muss aktiv "entschlüsselt" werden,
+        das ist ein sichtbarer, gezielter Schritt statt eines Nebenprodukts vom Durchstöbern.
+        Falls nötig, ganz einfaches Bild anbieten: Es ist wie ein Hausschlüssel im Blumentopf vor der eigenen Tür (Shell-Profil) vs.
+        im Blumentopf direkt neben der Fußmatte (.env) vs. im Tresor (Keychain) — der Blumentopf ist in allen Fällen kein Tresor,
+        aber manche Verstecke werden seltener zufällig durchsucht als andere.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Recap: Sicherheit</h2>
+      <p>Heute behandelt: <strong>Ebene 1 + 2</strong> (Hooks als Bonus).</p>
+      <div class="callout callout-info">
+        <span class="label">Nicht vergessen</span>
+        Die Datenklassifizierung gilt <strong>unabhängig</strong> von allen 4 Ebenen.
+      </div>
+      <aside class="notes">
+        Zielzeit: 1:15. Die 4 Ebenen aus der Vorschau-Folie mündlich rekapitulieren ("heute behandelt: 1+2, Hooks als Bonus") + Rückverweis auf die ersten beiden Folien dieses Blocks:
+        die Datenklassifizierung gilt unabhängig von allen 4 Ebenen.
+      </aside>
+    </section>
+
+  </section>
+
+  <!-- ================= BLOCK 3 ================= -->
+  <section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>Was ist eine Skill?</h2>
+      <p><code>SKILL.md</code> speichert <strong>wiederkehrendes Vorgehen</strong> dauerhaft — statt es jede Session neu zu erklären.</p>
+      <p>Liegt unter <code>.claude/skills/&lt;name&gt;/SKILL.md</code> (projektweit) oder <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> (für alle Projekte).</p>
+      <aside class="notes">Zielzeit: 2:00. Ablageort kurz erwähnen: projektlokal vs. global im Home-Verzeichnis — Parallele zu CLAUDE.md kommt in Block 4.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>Struktur einer SKILL.md</h2>
+      <pre><code class="language-markdown">---
+name: skill-name
+description: Wann und wofür diese Skill greift
+---
+
+# Skill-Name
+Deine Regeln und Urteilskriterien hier.</code></pre>
+      <aside class="notes">Zielzeit: 2:30. Frontmatter (name, description) + Body-Beispiel, minimal gehalten.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>Beispiel: Webdesign-Skill</h2>
+      <pre><code class="language-markdown">---
+name: webdesign-basics
+description: Farbpalette, Typografie und Layout für dieses Projekt
+---
+
+# Webdesign-Basics
+- Primärfarbe #2C3E50, Akzent #E67E22
+- Schrift: serifenlos, max. 2 Schriftgrößen-Stufen
+- Layout: Mobile-first, Whitespace großzügig</code></pre>
+      <p class="source-note">Quelle Skills-Mechanik: offizielle Anthropic/Claude-Code-Doku — [TODO: URL vor Veröffentlichung verifizieren]</p>
+      <aside class="notes">Zielzeit: 3:00. Kleine Webdesign-Skill: Farbpalette, Typografie-Regeln, Layout-Prinzipien — genau das, was im Spielprojekt gleich gebraucht wird.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>Abgrenzung</h2>
+      <p>Skill = <strong>aufgabenspezifisch</strong>, bei Bedarf geladen.</p>
+      <p><em>(Mehr zum Kontrast in Block 4 — CLAUDE.md)</em></p>
+      <aside class="notes">Zielzeit: 1:00.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>🛠 Live-Demo: Skill anlegen</h2>
+      <ul>
+        <li>Gemeinsam die Webdesign-Skill-Datei erstellen</li>
+        <li>Testanfrage stellen</li>
+        <li>Beobachten: greift die Skill?</li>
+      </ul>
+      <aside class="notes">Zielzeit: 4:30.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>Kernsatz</h2>
+      <p style="font-size:1.2em"><strong>Skill = Urteilsvermögen, nicht Automatisierung.</strong></p>
+      <aside class="notes">Zielzeit: 1:00.</aside>
+    </section>
+
+  </section>
+
+  <!-- ================= BLOCK 4 ================= -->
+  <section>
+
+    <section>
+      <p class="block-tag">Block 4 · CLAUDE.md</p>
+      <h2>Die Rolle von CLAUDE.md</h2>
+      <p>Projektweite, <strong>immer aktive</strong> Verhaltensregeln — im Unterschied zur aufgabenspezifischen Skill.</p>
+      <p>Liegt als <code>CLAUDE.md</code> im Projekt-Root — für persönliche Regeln über alle Projekte hinweg zusätzlich <code>~/.claude/CLAUDE.md</code>.</p>
+      <div class="callout callout-info">
+        <span class="label">Empfohlene Form</span>
+        Beides gehört rein: kurzer <strong>Projekt-Überblick</strong> (Struktur/Architektur) + konkrete <strong>Verhaltensregeln</strong> (Konventionen, "immer/nie X"). Faustregel: unter 200 Zeilen, lieber konkret als vage.
+      </div>
+      <aside class="notes">
+        Zielzeit: 2:15. Ablageort analog zu Skills: projektlokal vs. global im Home-Verzeichnis.
+        Empfehlung ausführen: CLAUDE.md mischt Projekt-Blueprint (Struktur/Architektur) und Verhaltensnormen (Konventionen, Regeln) — beides gehört rein, nicht nur eines von beidem.
+        Knapp halten (offizielle Empfehlung: unter 200 Zeilen), weil es bei jeder Session mitgeladen wird — lange Dateien kosten Kontext-Budget und werden schlechter befolgt.
+        Mehrstufige Anleitungen für einzelne Aufgaben gehören in eine Skill, nicht ins CLAUDE.md; Regeln, die nur für bestimmte Dateien gelten, gehören in `.claude/rules/`.
+        Quelle: offizielle Claude-Code-Doku zu CLAUDE.md/Memory.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 4 · CLAUDE.md</p>
+      <h2>Skill vs. CLAUDE.md</h2>
+      <table>
+        <tr><th></th><th>Skill</th><th>CLAUDE.md</th></tr>
+        <tr><td>Umfang</td><td>aufgabenspezifisch</td><td>projektweit</td></tr>
+        <tr><td>Ladezeitpunkt</td><td>bei Bedarf</td><td>immer aktiv</td></tr>
+        <tr><td>Inhalt</td><td>Fachwissen/Urteilskriterien</td><td>Konventionen/Sicherheitsnetz</td></tr>
+      </table>
+      <aside class="notes">Zielzeit: 2:00. Skill vs. CLAUDE.md — 2-Spalten-Folie.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 4 · CLAUDE.md</p>
+      <h2>🛠 Live: Mini-CLAUDE.md schreiben</h2>
+      <p>Für unser gleich startendes Spielprojekt:</p>
+      <ul>
+        <li>Projektziel</li>
+        <li>Konventionen</li>
+        <li>"Keine unnötigen Abhängigkeiten"</li>
+      </ul>
+      <aside class="notes">Zielzeit: 4:00. Gemeinsam Mini-CLAUDE.md fürs gleich startende Spielprojekt schreiben.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 4 · CLAUDE.md</p>
+      <h2>CLAUDE.md + Skill</h2>
+      <p style="font-size:1.1em"><strong>Ergänzen sich, statt zu konkurrieren.</strong></p>
+      <p>CLAUDE.md = Sicherheitsnetz · Skill = Fachwissen</p>
+      <aside class="notes">Zielzeit: 2:00.</aside>
+    </section>
+
+  </section>
+
+  <!-- ================= BLOCK 5 ================= -->
+  <section>
+
+    <section>
+      <p class="block-tag">Block 5 · Praxisteil</p>
+      <h2>🛠 Baut ein Web-Spiel</h2>
+      <p>Reines HTML/CSS/JS, kein Server.</p>
+      <p><strong>Ideen:</strong> Snake · Memory · Tic-Tac-Toe</p>
+      <div class="callout callout-hands-on">
+        <span class="label">Nutzt aktiv</span>
+        Sicherheitsregeln + Skill + CLAUDE.md aus Block 2–4.
+      </div>
+      <aside class="notes">Zielzeit: 2:00. Aufgabe erklären, Ideenliste zeigen, Hinweis auf aktive Nutzung der vorherigen Blöcke.</aside>
+    </section>
+
+    <section class="center-slide">
+      <p class="block-tag">Block 5 · Praxisteil</p>
+      <h2>Freie Arbeitszeit</h2>
+      <p>Anweisung → Code prüfen → im Browser testen → nachbessern.</p>
+      <p class="subtitle">Zwischen-Check-in bei Bedarf: "Wo steht ihr?"</p>
+      <aside class="notes">
+        26:00 reine Arbeitszeit + 2:00 optional für Zwischen-Check-in, falls Moderation es für nötig hält.
+        Kein Vortrag — diese Folie bleibt einfach stehen, während im Raum betreut wird.
+      </aside>
+    </section>
+
+  </section>
+
+  <!-- ================= BLOCK 6 ================= -->
+  <section>
+
+    <section>
+      <p class="block-tag">Block 6 · Abschluss</p>
+      <h2>Rückblick</h2>
+      <ul style="font-size:0.85em">
+        <li>Vibe Coding &amp; Harness erklären</li>
+        <li>Institutionellen Status + Datenklassifizierung einordnen</li>
+        <li>Permissions/Hooks einordnen, gefährliche Befehle blockieren</li>
+        <li>Umsichtiger Umgang mit <code>.env</code> (inkl. chmod-Grenzen)</li>
+        <li>Skill an einem Beispiel erklären</li>
+        <li>Rolle von CLAUDE.md erklären</li>
+        <li>Eigenständig ein Web-Spiel umgesetzt</li>
+      </ul>
+      <aside class="notes">Zielzeit: 2:00. Lernziele nochmal zeigen, kurz gegenchecken.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 6 · Abschluss</p>
+      <h2>Ausblick: Workshop 2</h2>
+      <p><em>"Vom Prinzip zur Technik"</em></p>
+      <ul>
+        <li>MCP kommt dazu</li>
+        <li>Skills &amp; Sub-Agents vertiefen</li>
+        <li>Community-Wiki-Idee</li>
+      </ul>
+      <aside class="notes">Zielzeit: 1:30.</aside>
+    </section>
+
+    <section class="center-slide">
+      <p class="block-tag">Block 6 · Abschluss</p>
+      <h2>Danke!</h2>
+      <p>Fragen? Feedback?</p>
+      <p class="subtitle">[Kontakt]</p>
+      <aside class="notes">Zielzeit: 1:30. Kontakt, ggf. Hinweis auf Community-Idee aus Workshop 2.</aside>
+    </section>
+
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.1/dist/plugin/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    progress: true,
+    controls: true,
+    transition: 'slide',
+    plugins: [ RevealHighlight, RevealNotes ]
+  });
+</script>
+
+</body>
+</html>
