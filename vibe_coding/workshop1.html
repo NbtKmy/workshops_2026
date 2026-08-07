@@ -135,8 +135,29 @@
     <section>
       <p class="block-tag">Block 1 · Einstieg</p>
       <h2>Was ist "Vibe Coding"?</h2>
-      <p>In natürlicher Sprache mit einem LLM Software bauen — statt Zeile für Zeile selbst zu tippen.</p>
-      <aside class="notes">Zielzeit: 1:15. Kurzdefinition, keine Diskussion nötig, direkt weiter zum Harness-Konzept.</aside>
+      <p>In natürlicher Sprache mit einem LLM programmieren — statt Zeile für Zeile selbst zu tippen.</p>
+      <aside class="notes">Zielzeit: 1:15. Kurzdefinition, keine Diskussion nötig, direkt weiter zu den Grundbegriffen.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>4 Begriffe, die wir gleich brauchen</h2>
+      <ul>
+        <li><strong>Prompt</strong> — deine Eingabe in natürlicher Sprache</li>
+        <li><strong>Session</strong> — ein zusammenhängender Chat mit Claude Code, von Start bis Ende</li>
+        <li><strong>Kontext(-fenster)</strong> — was das LLM in diesem Moment „sieht": Verlauf, Dateien, Regeln</li>
+        <li><strong>Tool-Call</strong> — wenn das LLM selbst einen Befehl ausführt, z. B. eine Datei lesen</li>
+      </ul>
+      <aside class="notes">Zielzeit: 0:45. Vier Grundbegriffe kurz nennen — keine Diskussion. Kontext und Tool-Call tauchen auf der nächsten Folie (Harness) gleich wieder auf, das übernimmt die Überleitung von selbst.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Einstieg</p>
+      <h2>Kernsatz</h2>
+      <blockquote>
+        „ Agent harness design is the practice of deciding what belongs in that scaffolding and, as models improve, what you can take out."
+      </blockquote>
+      <p class="source-note">Anthropic, <em>Agent Harness Design</em> — <a href="https://claude.com/blog/harnessing-claudes-intelligence" target="_blank" rel="noopener">claude.com/blog/harnessing-claudes-intelligence</a></p>
     </section>
 
     <section>
@@ -154,15 +175,6 @@
         Kernidee: Claude Code ist kein autonomer Agent im luftleeren Raum, sondern deterministischer Code + LLM-Schritte, eng geführt durch den Harness.
         Model gehört genau genommen zum "Motor" — aber welches Modell man einsetzt/konfiguriert, ist selbst eine Harness-Entscheidung, deshalb hier mitgelistet.
       </aside>
-    </section>
-
-    <section>
-      <p class="block-tag">Block 1 · Einstieg</p>
-      <h2>Kernsatz</h2>
-      <blockquote>
-        „ Agent harness design is the practice of deciding what belongs in that scaffolding and, as models improve, what you can take out."
-      </blockquote>
-      <p class="source-note">Anthropic, <em>Agent Harness Design</em> — <a href="https://claude.com/blog/harnessing-claudes-intelligence" target="_blank" rel="noopener">claude.com/blog/harnessing-claudes-intelligence</a></p>
     </section>
 
     <section class="center-slide">
