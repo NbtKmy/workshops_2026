@@ -128,17 +128,8 @@
       <h2>Kurz vorstellen</h2>
       <ul>
         <li>Name</li>
-        <li>Ein Satz: "Was hoffst du heute mitzunehmen?"</li>
+        <li>"Was hoffst du heute mitzunehmen?"</li>
       </ul>
-      <div class="callout callout-info">
-        <span class="label">Hinweis</span>
-        Bei mehr als 12 Teilnehmenden: 10 Sek./Person strikt, oder 2er-Murmelrunde statt Plenum.
-      </div>
-      <aside class="notes">
-        Zielzeit: 3:30. Kurze Vorstellungsrunde: Name + ein Satz ("Was hoffst du heute mitzunehmen?" oder alternativ "Programmiererfahrung: ja/nein").
-        Zweiter Zweck: gibt der Moderation ein Bild der Vorerfahrung in der Gruppe (Risiko "heterogene Vorkenntnisse" im Blick behalten).
-        Skalierungshinweis bei großen Gruppen wie im Callout.
-      </aside>
     </section>
 
     <section>
@@ -153,14 +144,15 @@
       <h2>Was ist ein Harness?</h2>
       <p><strong>LLM = Motor.</strong> <strong>Harness = alles drumherum</strong>, das daraus ein steuerbares Fahrzeug macht:</p>
       <ul>
-        <li>Permissions</li>
-        <li>Context</li>
-        <li>Tools</li>
-        <li>CLAUDE.md</li>
+        <li><strong>Permissions</strong> — z. B. <code>settings.json</code> deny/ask/allow</li>
+        <li><strong>Context</strong> — z. B. CLAUDE.md, Gesprächsverlauf</li>
+        <li><strong>Tools</strong> — z. B. Bash/Read/Edit, MCP, Skills</li>
+        <li><strong>Model</strong> — z. B. Sonnet/Opus/Haiku, Thinking-Budget</li>
       </ul>
       <aside class="notes">
         Zielzeit: 2:15. Analogie: Das Sprachmodell ist der "Motor", der Harness ist alles drumherum, das aus dem Motor ein sicheres, steuerbares Fahrzeug macht.
         Kernidee: Claude Code ist kein autonomer Agent im luftleeren Raum, sondern deterministischer Code + LLM-Schritte, eng geführt durch den Harness.
+        Model gehört genau genommen zum "Motor" — aber welches Modell man einsetzt/konfiguriert, ist selbst eine Harness-Entscheidung, deshalb hier mitgelistet.
       </aside>
     </section>
 
@@ -168,10 +160,9 @@
       <p class="block-tag">Block 1 · Einstieg</p>
       <h2>Kernsatz</h2>
       <blockquote>
-        „Claude Code ist deterministischer Code + gezielt platzierte LLM-Schritte — kein freier Agent im luftleeren Raum."
+        „ Agent harness design is the practice of deciding what belongs in that scaffolding and, as models improve, what you can take out."
       </blockquote>
-      <p class="source-note">Anthropic, <em>Building Effective Agents</em> — <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">anthropic.com/engineering/building-effective-agents</a></p>
-      <aside class="notes">Zielzeit: 1:45. Diesen Satz ruhig zweimal sagen — er ist die Brücke zu Block 2 (Sicherheit ist Teil des Harness, nicht Bonus).</aside>
+      <p class="source-note">Anthropic, <em>Agent Harness Design</em> — <a href="https://claude.com/blog/harnessing-claudes-intelligence" target="_blank" rel="noopener">claude.com/blog/harnessing-claudes-intelligence</a></p>
     </section>
 
     <section class="center-slide">
@@ -193,10 +184,7 @@
         <span class="label">Status</span>
         ⏳ in Prüfung — geplante Bereitstellung: tbd. Kein von der IT freigegebenes Standardtool.
       </div>
-      <p>Heutige Nutzung = Eigenverantwortung / Pilot, nicht offizieller Betrieb.</p>
-      <aside class="notes">
-        Zielzeit: 1:00. Sachlich, ohne Dramatik vortragen. Dies ist der Auftakt des Sicherheitsblocks — bewusst vor der Technik, nicht danach.
-      </aside>
+       <p class="source-note">UZH Zentrale Informatik, <em>KI Tools und Services</em> — <a href="https://www.zi.uzh.ch/de/staff/software-elearning/ai-tools-und-services.html" target="_blank" rel="noopener">www.zi.uzh.ch/de/staff/software-elearning/ai-tools-und-services.html</a></p>
     </section>
 
     <section>
@@ -207,12 +195,7 @@
         Nur <strong>öffentliche Daten</strong> — Claude/Claude Code läuft als Cloud-Dienst weltweit.
         Von der Bibliothek <strong>lizenzierte E-Ressourcen</strong> (Journale, E-Books) dürfen <strong>niemals</strong> in Cloud-KI.
       </div>
-      <p>Dafür kommen nur geschlossene/lokale bzw. On-Premise-Systeme in Frage — und selbst die nur bedingt.</p>
-      <aside class="notes">
-        Zielzeit: 1:30. Kernregel: nur öffentliche Daten, weil Claude/Claude Code als Cloud-Dienst weltweit läuft (Daten verlassen die Institution).
-        Speziell wichtig: von der Bibliothek lizenzierte E-Ressourcen dürfen niemals in Cloud-KI wie Claude — dafür kommen nur geschlossene/lokale bzw.
-        On-Premise-Systeme in Frage, und selbst die nur bedingt (Mengenlimits, kein Drittzugriff, vorherige Rücksprache mit der Bibliothek).
-      </aside>
+      <p class="source-note">UB Zürich, <em>KI und lizenzierte Volltexte</em> — <a href="https://www.ub.uzh.ch/de/literatur-suchen-nutzen/e-library-nutzen/ki-und-lizenzierte-volltexte.html" target="_blank" rel="noopener">www.zi.uzh.ch/de/staff/software-elearning/ai-tools-und-services.html</a></p>
     </section>
 
     <section>
@@ -230,61 +213,46 @@
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
-      <h2>Ein Praxis-Fakt zum Nachdenken</h2>
-      <p>Ein Praktiker liess das offizielle Security-Plugin <strong>2 Monate</strong> laufen und alle <strong>17.385</strong> Log-Zeilen ausgewertet.</p>
-      <p>Von <strong>25 Detektionsregeln</strong> hat in dieser Zeit …</p>
-      <aside class="notes">
-        Zielzeit: 1:00. Setup der Anekdote, Spannung aufbauen vor der Pointe auf der nächsten Folie.
-      </aside>
+      <h2>Was kann schiefgehen? — 5 Risiken</h2>
+      <ul style="font-size:0.85em">
+        <li><strong>Bash-Missgeschick</strong> — <code>rm -rf</code> &amp; Co. löschen versehentlich Dateien</li>
+        <li><strong>Secrets im Klartext</strong> — API-Keys aus <code>.env</code> landen hartcodiert im Code oder werden ausgelesen</li>
+        <li><strong>Poisoned MCP/Skill</strong> — bösartig präparierte Tools/Anleitungen</li>
+        <li><strong>Prompt Injection</strong> — versteckte Anweisungen in Webseiten/Dateien übernehmen die Kontrolle</li>
+        <li><strong>Ungewollte Exfiltration</strong> — Daten wandern unbemerkt nach außen</li>
+      </ul>
+      <aside class="notes">Zielzeit: 1:30. Fünf Risiken kurz benennen, keine Vertiefung — Details kommen in den nächsten Folien bzw. werden bewusst offen gelassen.</aside>
     </section>
 
-    <section class="center-slide">
+    <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
-      <p class="big-stat">… nur EINE einzige reagiert.</p>
-      <p>(24 blieben komplett stumm)</p>
-      <div class="callout callout-fact">
-        <span class="label">Fakt, ohne Quellenlink</span>
-        Bewusst als unverlinkte Anekdote präsentiert — der Punkt zählt, nicht die Quelle.
-      </div>
+      <h2>Was behandeln wir heute?</h2>
+      <table>
+        <tr><th>Mechanismus</th><th>Status heute</th></tr>
+        <tr><td>Permissions</td><td>✅ immer verfügbar — heutiger Schwerpunkt</td></tr>
+        <tr><td>Sandbox</td><td>Zusatz-Absicherung — in der Praxis oft ausgelassen</td></tr>
+        <tr><td>Hooks</td><td>Versicherung — nur kurz erwähnt</td></tr>
+        <tr><td>Security-Plugins (z. B. <em>security-guidance</em>)</td><td>gibt's — heute nur der Name</td></tr>
+      </table>
       <aside class="notes">
-        Zielzeit: 0:30. Pointe: Das Plugin sieht nur, WAS Claude schreibt, nicht WELCHE Dateien lesbar sind oder WOHIN Daten gehen.
-        Motiviert die nächsten Folien. Bewusste Entscheidung: kein Link zur Quelle (Entscheidung 2026-07-30) — falls nach der Quelle gefragt wird,
-        freundlich abwinken: "das ist hier als Erfahrungswert gemeint, nicht als zitierfähige Studie".
+        Zielzeit: 1:15. Kein "4-Ebenen"-Modell (das ist nicht offiziell und Anthropic strukturiert es nicht so) — stattdessen ehrliche Gewichtung:
+        Permissions ist der heutige Schwerpunkt, Sandbox eine Zusatzabsicherung, Hooks und Security-Plugins nur Namen für später.
       </aside>
     </section>
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
-      <h2>Die 4 Verteidigungsebenen</h2>
-      <ol>
-        <li><strong>Sandbox</strong> (immer aktiv)</li>
-        <li><strong>Permissions</strong> (immer aktiv) ← heutiger Fokus</li>
-        <li>Scan (Beta, kostenpflichtig — nicht heute)</li>
-        <li>Plugin (das war die letzte Folie!)</li>
-      </ol>
-      <div class="callout callout-info">
-        <span class="label">Pointe</span>
-        Ebene 4 allein reicht nicht — deshalb heute Fokus auf Ebene 1 + 2.
-      </div>
-      <aside class="notes">
-        Zielzeit: 1:15. Kurze Landkarte, Pointe direkt aus der Vorfolie weitergeführt. Ebene 3 (Scan) nur als Name erwähnen
-        (Beta, kostenpflichtig, nicht Workshop-Thema).
-      </aside>
-    </section>
-
-    <section>
-      <p class="block-tag">Block 2 · Sicherheit</p>
-      <h2>Ebene 1: Sandbox</h2>
+      <h2>Sandbox — Datei- &amp; Netzwerk-Isolation</h2>
       <pre><code class="language-bash">/sandbox</code></pre>
-      <p>Ein Befehl → OS-Isolation für Dateien &amp; Netzwerk.</p>
-      <p>macOS: keine Zusatzinstallation nötig. Linux/WSL2: <code>bubblewrap</code> + <code>socat</code> nötig. Natives Windows: nicht unterstützt (nur über WSL2).</p>
-      <div class="callout callout-info"><span class="label">Tipp</span> Lohnt sich — probiert's zuhause aus.</div>
-      <aside class="notes">Zielzeit: 1:15. Kurz zeigen, nicht vertiefen. macOS läuft sofort (Seatbelt eingebaut); Linux/WSL2 braucht `bubblewrap` + `socat` per Paketmanager; natives Windows wird nicht unterstützt, nur via WSL2.</aside>
+      <p>Isoliert nur <strong>Bash-Befehle</strong> (nicht Read/Edit/WebFetch/MCP).</p>
+      <p style="font-size:0.75em">macOS: keine Zusatzinstallation nötig. Linux/WSL2: <code>bubblewrap</code> + <code>socat</code> nötig. Natives Windows: nicht unterstützt (nur über WSL2).</p>
+      <div class="callout callout-info"><span class="label">Realistisch betrachtet</span> Bei interaktiver Arbeit optional — Pflicht nur bei unbeaufsichtigten Läufen, deshalb oft ausgelassen.</div>
+      <aside class="notes">Zielzeit: 1:15. Kurz zeigen, nicht vertiefen. macOS läuft sofort (Seatbelt eingebaut); Linux/WSL2 braucht `bubblewrap` + `socat` per Paketmanager; natives Windows wird nicht unterstützt, nur via WSL2. Wichtig: Sandbox deckt nur Bash ab, nicht Read/Edit/WebFetch/MCP.</aside>
     </section>
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
-      <h2>Ebene 2: Permissions — die 3 Stufen</h2>
+      <h2>Permissions — die 3 Stufen</h2>
       <div style="max-width: 620px; margin: 0.8em auto;">
         <svg viewBox="0 0 760 280" style="width:100%; height:auto;">
           <defs>
@@ -385,8 +353,8 @@
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
-      <h2>chmod 600 — was es wirklich schützt</h2>
-      <p><strong>Robusterer Schutz:</strong> Secrets gar nicht in eine für Claude sichtbare Datei legen → Shell-Profil oder OS-Keychain statt <code>.env</code> im Projektordner.</p>
+      <h2>Der eigentliche Schutz: <code>.env</code> gar nicht erst anlegen</h2>
+      <p>Secrets nicht in eine für Claude sichtbare Datei legen → Shell-Profil oder OS-Keychain statt <code>.env</code> im Projektordner.</p>
       <aside class="notes">
         Zielzeit: 2:15. Die chmod-Klarstellung ist wichtig und wurde bewusst korrigiert (vorherige Annahme "chmod = Doppelschutz" war falsch) —
         Claude Code läuft als dieselbe Nutzerkennung wie du, chmod 600 hält andere OS-Accounts fern, nicht Claude Code selbst.
@@ -404,15 +372,30 @@
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
+      <h2>Was heute nicht abgedeckt ist</h2>
+      <div class="callout callout-warn">
+        <span class="label">Kein Rundum-Schutz</span>
+        Poisoned MCP/Skill, Prompt Injection, ungewollte Exfiltration — dafür gibt's <strong>kein</strong> schlagkräftiges Bordmittel. Hooks, <code>.claude/rules/</code> und Security-Plugins decken das nicht ab.
+      </div>
+      <p>Bleibt vorerst: nur vertrauenswürdige MCP-Server/Skills einbinden, bei externen Inhalten wachsam bleiben.</p>
+      <p class="subtitle">MCP kommt in Workshop 2 dazu — dort mehr dazu.</p>
+      <aside class="notes">
+        Zielzeit: 1:15. Ehrlich bleiben: Hooks können technisch MCP-Tool-Calls/WebFetch abfangen, aber ohne eingebaute Inhaltsprüfung; `.claude/rules/` hat keine Durchsetzungskraft (reine Kontext-Info, Claude kann sie ignorieren);
+        das security-guidance-Plugin prüft nur von Claude geschriebenen Code, nicht gelesene externe Inhalte. Für diese drei Risiken bleibt nur Wachsamkeit. Überleitung zu Workshop 2 (MCP).
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Sicherheit</p>
       <h2>Recap: Sicherheit</h2>
-      <p>Heute behandelt: <strong>Ebene 1 + 2</strong> (Hooks als Bonus).</p>
+      <p>Heute behandelt: <strong>Permissions</strong> (Schwerpunkt) + <strong>Sandbox</strong> (Zusatz), Hooks als Bonus.</p>
       <div class="callout callout-info">
         <span class="label">Nicht vergessen</span>
-        Die Datenklassifizierung gilt <strong>unabhängig</strong> von allen 4 Ebenen.
+        Die Datenklassifizierung gilt <strong>unabhängig</strong> von allen Schutzmechanismen.
       </div>
       <aside class="notes">
-        Zielzeit: 1:15. Die 4 Ebenen aus der Vorschau-Folie mündlich rekapitulieren ("heute behandelt: 1+2, Hooks als Bonus") + Rückverweis auf die ersten beiden Folien dieses Blocks:
-        die Datenklassifizierung gilt unabhängig von allen 4 Ebenen.
+        Zielzeit: 1:15. Mündlich rekapitulieren ("heute behandelt: Permissions als Schwerpunkt, Sandbox als Zusatz, Hooks als Bonus") + Rückverweis auf die ersten beiden Folien dieses Blocks:
+        die Datenklassifizierung gilt unabhängig von allen Schutzmechanismen.
       </aside>
     </section>
 
@@ -439,23 +422,43 @@ description: Wann und wofür diese Skill greift
 
 # Skill-Name
 Deine Regeln und Urteilskriterien hier.</code></pre>
-      <aside class="notes">Zielzeit: 2:30. Frontmatter (name, description) + Body-Beispiel, minimal gehalten.</aside>
+      <aside class="notes">Zielzeit: 2:00. Frontmatter (name, description) + Body-Beispiel, minimal gehalten.</aside>
     </section>
 
     <section>
       <p class="block-tag">Block 3 · Skills</p>
-      <h2>Beispiel: Webdesign-Skill</h2>
-      <pre><code class="language-markdown">---
-name: webdesign-basics
-description: Farbpalette, Typografie und Layout für dieses Projekt
----
+      <h2>skill-creator: eine Skill, die Skills baut</h2>
+      <p><code>skill-creator</code> ist eine <strong>offizielle Anthropic-Skill</strong> — sie erstellt andere Skills interaktiv, per Rückfragen zum Anwendungsfall.</p>
+      <p>Kommt nicht vorinstalliert, sondern als Plugin aus dem offiziellen Marketplace.</p>
+      <aside class="notes">Zielzeit: 1:00. Meta-Konzept kurz einordnen: eine Skill, die beim Skill-Bauen hilft, statt SKILL.md von Hand zu tippen.</aside>
+    </section>
 
-# Webdesign-Basics
-- Primärfarbe #2C3E50, Akzent #E67E22
-- Schrift: serifenlos, max. 2 Schriftgrößen-Stufen
-- Layout: Mobile-first, Whitespace großzügig</code></pre>
-      <p class="source-note">Quelle Skills-Mechanik: offizielle Anthropic/Claude-Code-Doku — [TODO: URL vor Veröffentlichung verifizieren]</p>
-      <aside class="notes">Zielzeit: 3:00. Kleine Webdesign-Skill: Farbpalette, Typografie-Regeln, Layout-Prinzipien — genau das, was im Spielprojekt gleich gebraucht wird.</aside>
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>🛠 Live: skill-creator installieren</h2>
+      <pre><code class="language-bash">/plugin install skill-creator@claude-plugins-official
+/reload-plugins</code></pre>
+      <p class="subtitle">Falls Marketplace noch fehlt, vorher: <code>/plugin marketplace add anthropics/claude-plugins-official</code></p>
+      <div class="callout callout-info">
+        <span class="label">Anknüpfung Block 2</span>
+        Genau das Prinzip von eben: nur vertrauenswürdige, offizielle Quellen einbinden.
+      </div>
+      <p class="source-note">Quelle: offizielle Claude-Code-Doku — https://code.claude.com/docs/en/skills.md</p>
+      <aside class="notes">Zielzeit: 1:30. Live tippen. Falls reload-plugins wegen Prompt-Cache warnt: mit --force wiederholen.</aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 3 · Skills</p>
+      <h2>🛠 Live-Demo: Skill fürs Spielprojekt erzeugen</h2>
+      <p>Kein eigener Slash-Befehl — einfach im Chat natürlichsprachlich anfragen:</p>
+      <pre><code class="language-text">"Erstelle mit skill-creator eine Skill fürs
+Web-Spiel-Projekt: HTML/CSS/JS, Canvas-Konventionen,
+Dateistruktur, keine externen Abhängigkeiten."</code></pre>
+      <ul>
+        <li>skill-creator stellt Rückfragen — vorbereitet beantworten</li>
+        <li>Generierte SKILL.md gemeinsam prüfen</li>
+      </ul>
+      <aside class="notes">Zielzeit: 5:30. Vorbereitete Antworten bereithalten für flüssigen Ablauf. Ergebnis wird direkt im Spielprojekt (Block 5) verwendet.</aside>
     </section>
 
     <section>
@@ -464,17 +467,6 @@ description: Farbpalette, Typografie und Layout für dieses Projekt
       <p>Skill = <strong>aufgabenspezifisch</strong>, bei Bedarf geladen.</p>
       <p><em>(Mehr zum Kontrast in Block 4 — CLAUDE.md)</em></p>
       <aside class="notes">Zielzeit: 1:00.</aside>
-    </section>
-
-    <section>
-      <p class="block-tag">Block 3 · Skills</p>
-      <h2>🛠 Live-Demo: Skill anlegen</h2>
-      <ul>
-        <li>Gemeinsam die Webdesign-Skill-Datei erstellen</li>
-        <li>Testanfrage stellen</li>
-        <li>Beobachten: greift die Skill?</li>
-      </ul>
-      <aside class="notes">Zielzeit: 4:30.</aside>
     </section>
 
     <section>
@@ -560,7 +552,6 @@ description: Farbpalette, Typografie und Layout für dieses Projekt
       <p class="block-tag">Block 5 · Praxisteil</p>
       <h2>Freie Arbeitszeit</h2>
       <p>Anweisung → Code prüfen → im Browser testen → nachbessern.</p>
-      <p class="subtitle">Zwischen-Check-in bei Bedarf: "Wo steht ihr?"</p>
       <aside class="notes">
         26:00 reine Arbeitszeit + 2:00 optional für Zwischen-Check-in, falls Moderation es für nötig hält.
         Kein Vortrag — diese Folie bleibt einfach stehen, während im Raum betreut wird.
