@@ -110,8 +110,8 @@
     <section>
       <p class="block-tag">Block 1 · Prinzipien</p>
       <h2>Agenda — 90 Minuten</h2>
-      <ol class="agenda-list">
-        <li>Prinzipien gemeinsam erarbeiten <span class="time">(15')</span></li>
+      <ol class="agenda-list" style="font-size: 0.9em;">
+        <li>Prinzipien: Vorschläge &amp; Diskussion <span class="time">(15')</span></li>
         <li>Technik-Menü: von Prinzip zu Werkzeug <span class="time">(14')</span></li>
         <li>Hands-on: Technik am eigenen Fall <span class="time">(30')</span></li>
         <li>Show &amp; Share + Grundstein für die Community <span class="time">(15')</span></li>
@@ -127,16 +127,20 @@
       <p class="block-tag">Block 1 · Prinzipien</p>
       <h2>Kurz zur Gruppe</h2>
       <ul>
+        <li>Kurze Vorstellung!</li>
         <li>Woran arbeitet ihr aktuell mit Claude Code?</li>
         <li>Wo hakt es — bei der Qualität der Ergebnisse oder eher bei Zeit/Kosten?</li>
       </ul>
-      <div class="callout callout-info">
-        <span class="label">Falls Vorab-Umfrage fehlt</span>
-        Hier live nachholen — inkl. Frage nach einer konkreten, wiederkehrenden Aufgabe für Block 3.
-      </div>
       <aside class="notes">
         Zielzeit: 2:00. Kurz, da erfahrenere/kleinere Gruppe als in Workshop 1: woran arbeitet ihr, wo hakt es (Qualität vs. Zeit/Kosten). Falls die Vorab-Umfrage nicht ausgefüllt wurde, hier live nachholen (inkl. Frage nach wiederkehrender Aufgabe für Block 3).
       </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 1 · Prinzipien</p>
+      <h2>Was ist eine "gute" Praxis?</h2>
+      <p>4 Vorschläge von mir —</p>
+      <p>im Workshop als <strong>Prinzipien</strong> behandelt.</p>
     </section>
 
     <section>
@@ -167,23 +171,10 @@
     <section>
       <p class="block-tag">Block 1 · Prinzipien</p>
       <h2>Zwei weitere Prinzipien (Impuls)</h2>
-      <p><strong>Verifizierbarkeit:</strong> wer etwas umsetzt, sollte es nicht auch allein bewerten.</p>
-      <p><strong>Judgment-Asset statt Wiederholung:</strong> dieselbe Erklärung nicht jede Session neu tippen.</p>
+      <p><strong>Verifizierbarkeit:</strong> Qualitätsprüfung dem LLM überlassen und automatisieren.</p>
+      <p><strong>Dauerhaftes Wissen:</strong> nicht jede Session gleiche Texte eingeben.</p>
       <aside class="notes">
-        Zielzeit: 2:00. Verifizierbarkeit: wer umsetzt, sollte nicht allein bewerten — im Idealfall prüft ein unabhängiges Modell/Kriterium, nicht dieselbe Session, die den Code geschrieben hat. Judgment-Asset statt Wiederholung: dieselbe Erklärung nicht jede Session neu tippen. Bewusst kurz, keine Diskussion hier.
-      </aside>
-    </section>
-
-    <section>
-      <p class="block-tag">Block 1 · Prinzipien</p>
-      <h2>🗳 Voting</h2>
-      <div class="callout callout-hands-on">
-        <span class="label">Welches Prinzip drängt gerade am meisten?</span>
-        Qualität (Kontext) · Kosten (Tokens) · Verifizierbarkeit · Judgment-Asset
-      </div>
-      <p>Ergebnis bestimmt die Gewichtung von Block 2.</p>
-      <aside class="notes">
-        Zielzeit: 2:15. Gruppe stimmt ab: welches der vier Prinzipien drängt gerade am meisten? Ergebnis bestimmt die Gewichtung von Block 2.
+        Zielzeit: 2:00. Verifizierbarkeit: Qualitätsprüfung dem LLM überlassen und automatisieren — im Idealfall prüft ein unabhängiges Modell/Kriterium, nicht dieselbe Session, die den Code geschrieben hat. Dauerhaftes Wissen: nicht jede Session gleiche Texte eingeben. Bewusst kurz, keine Diskussion hier.
       </aside>
     </section>
 
@@ -203,7 +194,7 @@
       <h2>Prinzip → Technik</h2>
       <table>
         <tr><th>Prinzip</th><th>Technik(en)</th></tr>
-        <tr><td>Judgment-Asset statt Wiederholung</td><td><code>CLAUDE.md</code>-Regeln, <code>SKILL.md</code></td></tr>
+        <tr><td>Dauerhaftes Wissen</td><td><code>CLAUDE.md</code>-Regeln, <code>SKILL.md</code></td></tr>
         <tr><td>Relevanter statt überfüllter Kontext</td><td>CLAUDE.md/SKILL.md-Disziplin, <code>/clear</code> &amp; <code>/compact</code>, MCP statt Copy-Paste</td></tr>
         <tr><td>Tokenkosten bewusst steuern</td><td><code>/clear</code> &amp; <code>/compact</code>, Modellwahl, MCP statt Copy-Paste</td></tr>
         <tr><td>Verifizierbarkeit</td><td><code>/plan</code> vor der Umsetzung, <code>/goal</code> danach</td></tr>
@@ -234,10 +225,8 @@
       <p class="block-tag">Block 2 · Technik-Menü</p>
       <h2>MCP: Zugriff statt Copy-Paste</h2>
       <p>Zugriff auf externe Systeme (DB, API, SaaS), ohne Daten manuell in den Prompt zu kopieren.</p>
+      <p>Beispiel: <a href="https://scite.ai/mcp?utm_source=google&utm_medium=cpc&utm_campaign=brand&utm_term=scite%20mcp&gad_source=1&gad_campaignid=19870517034&gbraid=0AAAAACSa0LLm625u1kgeaBjFOgO0lMHAe&gclid=CjwKCAjwyuDTBhB-EiwANCQhLAEedjtEA3m4XMLs9Mk11wOsWT6F8FXCrJdYiRPGcsyIIKlHv71K8BoCJU0QAvD_BwE" target="_blank" rel="noopener">Scite MCP</a>, <a href="https://context7.com/" target="_blank" rel="noopener">Context7</a></p>
       <p><em>Abgrenzung: Skill = Urteilsvermögen, MCP = Zugriff.</em></p>
-      <aside class="notes">
-        Zielzeit: 1:15. MCP neu eingeführt (in Workshop 1 bewusst ausgelassen). Kurzer Live-Demo-Ausschnitt statt Hands-on (Setup/Auth-Risiko in 90 Min zu hoch — Fallback als Aufzeichnung/Screenshot-Sequenz vorbereiten, nicht live riskieren). (Zwei-Folien-Split 2026-08-03, vorher eine Folie mit 2.3-Empfehlungen — lief über)
-      </aside>
     </section>
 
     <section>
@@ -245,14 +234,15 @@
       <h2>MCP-Empfehlungen: zwei Vertrauensstufen</h2>
       <div class="callout callout-info">
         <span class="label">Offizielle Referenzserver</span>
-        Kein Account/OAuth nötig: <strong>Filesystem</strong>, <strong>Memory</strong> (Knowledge-Graph — Anschluss an den Hands-on-Fallback in Block 3).
+        Kein Account/OAuth nötig: <strong>Memory</strong> (Knowledge-Graph — Anschluss an den Hands-on-Fallback in Block 3).
       </div>
       <div class="callout callout-info">
         <span class="label">Etablierter Drittanbieter</span>
         <strong>Context7</strong> (Upstash) — aktuelle Bibliotheks-/Framework-Doku direkt im Kontext, Open Source, ohne API-Key nutzbar (rate-limited).
       </div>
       <p class="source-note">
-        <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">github.com/modelcontextprotocol/servers</a> ·
+        <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">github.com/modelcontextprotocol/servers</a>
+        (<a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank" rel="noopener">Memory</a>) ·
         <a href="https://github.com/upstash/context7" target="_blank" rel="noopener">github.com/upstash/context7</a>
       </p>
       <aside class="notes">
@@ -265,7 +255,7 @@
       <h2>Vorsicht: ungeprüfte Skills &amp; MCP-Server</h2>
       <div class="callout callout-warn">
         <span class="label">Risiko</span>
-        Skill = Instruktionen mit deinen Rechten. MCP = kann versteckte Anweisungen einschleusen („Tool Poisoning").
+        Skill = versteckte Anweisungen direkt in der Datei — mit deinen Rechten ausgeführt. MCP = versteckte Anweisungen in der Tool-Beschreibung („Tool Poisoning").
       </div>
       <p><strong>Faustregel:</strong> offizielle Quellen zuerst, sonst eigener Code-Review vor Installation.</p>
       <aside class="notes">
@@ -275,13 +265,14 @@
 
     <section>
       <p class="block-tag">Block 2 · Technik-Menü</p>
-      <h2>Datenklassifizierung gilt auch für MCP</h2>
-      <div class="callout callout-caution">
-        <span class="label">Institutionell</span>
-        Ein MCP-Server ist ein <strong>zusätzlicher externer Kanal</strong> — die Datenklassifizierungsregel aus Workshop 1 (nur öffentliche Daten, keine lizenzierten Bibliotheksressourcen) gilt für alles, was durch ihn läuft.
-      </div>
+      <h2>Plugin: Skill + MCP + Command + Hook gebündelt</h2>
+      <p>Ein Plugin bündelt mehrere Bausteine — Skills, Slash-Commands, Hooks, MCP-Server — zu einer installierbaren Einheit.</p>
+      <p>Installation über einen <strong>Marketplace</strong>, z. B. <code>/plugin install &lt;name&gt;@&lt;marketplace&gt;</code>.</p>
+      <p class="source-note">
+        <a href="https://code.claude.com/docs/en/discover-plugins" target="_blank" rel="noopener">code.claude.com/docs/en/discover-plugins</a>
+      </p>
       <aside class="notes">
-        Zielzeit: 1:15. Anschluss an Workshop 1, Block 2: Status von Claude/Claude Code bei uns weiterhin "in Prüfung", nur öffentliche Daten dürfen verarbeitet werden — bei MCP gilt das doppelt, da ein zusätzlicher externer Kanal entsteht.
+        Zielzeit: 1:00. Plugin bündelt, was bereits vorgestellt wurde (Skill, MCP) plus Slash-Commands und Hooks. Bewusst kurz — reine Begriffsklärung, keine Vertiefung.
       </aside>
     </section>
 
@@ -302,8 +293,26 @@
 
     <section>
       <p class="block-tag">Block 2 · Technik-Menü</p>
-      <h2>Gruppenentscheid</h2>
-      <p>Basierend auf dem Voting aus Block 1: die Gruppe wählt <strong>2–3 Techniken</strong> aus dem Menü, die im Hands-on vertieft werden.</p>
+      <h2>Technik-Menü im Überblick</h2>
+      <table style="font-size: 0.6em;">
+        <tr><th>Technik</th><th>Prinzip</th></tr>
+        <tr><td><code>CLAUDE.md</code>-Regeln</td><td>Dauerhaftes Wissen</td></tr>
+        <tr><td><code>SKILL.md</code></td><td>Dauerhaftes Wissen</td></tr>
+        <tr><td><code>/clear</code> &amp; <code>/compact</code></td><td>Qualität (Kontext), Kosten (Tokens)</td></tr>
+        <tr><td>MCP statt Copy-Paste</td><td>Qualität (Kontext), Kosten (Tokens), Dauerhaftes Wissen</td></tr>
+        <tr><td>Modellwahl</td><td>Kosten (Tokens)</td></tr>
+        <tr><td><code>/plan</code></td><td>Verifizierbarkeit</td></tr>
+        <tr><td><code>/goal</code></td><td>Verifizierbarkeit</td></tr>
+      </table>
+      <aside class="notes">
+        Zielzeit: 1:00. Vollständige Liste aller vorgestellten Techniken, Grundlage für den Gruppenentscheid auf der nächsten Folie.
+      </aside>
+    </section>
+
+    <section>
+      <p class="block-tag">Block 2 · Technik-Menü</p>
+      <h2>🗳 Gruppenentscheid</h2>
+      <p>Die Gruppe wählt <strong>2–3 Techniken</strong> aus der Tabelle, die im Hands-on vertieft werden.</p>
       <p class="subtitle">Der Rest bekommt nur die Tabellenzeile plus einen Wiki-Verweis zum Selbststudium.</p>
       <aside class="notes">Zielzeit: 1:30.</aside>
     </section>
