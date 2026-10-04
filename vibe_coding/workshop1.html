@@ -337,7 +337,7 @@
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
       <h2>🛠 Praxisteil A</h2>
-      <p>Öffnet <code>.claude/settings.json</code> (projektlokal — für alle Projekte gilt stattdessen <code>~/.claude/settings.json</code>) und ergänzt:</p>
+      <p style="font-size:0.75em">Öffnet <code>.claude/settings.json</code> (projektlokal — für alle Projekte gilt stattdessen <code>~/.claude/settings.json</code>) und ergänzt:</p>
       <pre><code class="language-json">{
   "permissions": {
     "deny": [
@@ -346,6 +346,7 @@
     ]
   }
 }</code></pre>
+      <p style="font-size:0.50em"><strong>Hinweis:</strong> Pattern-Matching ist keine Garantie — Varianten wie <code>rm -fr</code> werden nicht erfasst.</p>
       <div class="callout callout-hands-on">
         <span class="label">Testen — aber sicher</span>
         Blockiert es wirklich? Nur mit einem Wegwerf-Ordner ausprobieren, nicht mit echten Projektdateien — falls die Regel doch nicht greift, soll nichts Echtes kaputtgehen.
