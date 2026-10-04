@@ -113,7 +113,7 @@
       <ol class="agenda-list">
         <li>Einstieg: Vibe Coding &amp; Harness <span class="time">(11')</span></li>
         <li>Sicherheit: Konfiguration &amp; Daten <span class="time">(22')</span></li>
-        <li>Skills am Beispiel Webdesign <span class="time">(14')</span></li>
+        <li>Skills am Beispiel skill-creator <span class="time">(14')</span></li>
         <li>Die Rolle von CLAUDE.md <span class="time">(10')</span></li>
         <li>Praxisteil: Web-Spiel bauen <span class="time">(30')</span></li>
         <li>Abschluss &amp; Ausblick <span class="time">(5')</span></li>
@@ -128,7 +128,7 @@
       <h2>Kurz vorstellen</h2>
       <ul>
         <li>Name</li>
-        <li>"Was hoffst du heute mitzunehmen?"</li>
+        <li>„Was hoffst du heute mitzunehmen?"</li>
       </ul>
     </section>
 
@@ -175,9 +175,11 @@
       <p class="block-tag">Block 1 · Einstieg</p>
       <h2>Kernsatz</h2>
       <blockquote>
-        „ Agent harness design is the practice of deciding what belongs in that scaffolding and, as models improve, what you can take out."
+        „Harness-Design heißt entscheiden, was ins Gerüst gehört — und, je besser die Modelle werden, was man wieder weglassen kann."
       </blockquote>
-      <p class="source-note">Anthropic, <em>Agent Harness Design</em> — <a href="https://claude.com/blog/harnessing-claudes-intelligence" target="_blank" rel="noopener">claude.com/blog/harnessing-claudes-intelligence</a></p>
+      <p>Es gibt kein Harness, das für immer richtig ist — mit stärkeren Modellen wird <strong>abgebaut</strong>, nicht angebaut.</p>
+      <p class="source-note">Anthropic, <em>Agent Harness Design</em> (sinngemäß übersetzt) — <a href="https://claude.com/blog/harnessing-claudes-intelligence" target="_blank" rel="noopener">claude.com/blog/harnessing-claudes-intelligence</a></p>
+      <aside class="notes">Original: „Agent harness design is the practice of deciding what belongs in that scaffolding and, as models improve, what you can take out."</aside>
     </section>
 
     <section>
@@ -227,7 +229,7 @@
         Nur <strong>öffentliche Daten</strong> — Claude/Claude Code läuft als Cloud-Dienst weltweit.
         Von der Bibliothek <strong>lizenzierte E-Ressourcen</strong> (Journale, E-Books) dürfen <strong>niemals</strong> in Cloud-KI.
       </div>
-      <p class="source-note">UB Zürich, <em>KI und lizenzierte Volltexte</em> — <a href="https://www.ub.uzh.ch/de/literatur-suchen-nutzen/e-library-nutzen/ki-und-lizenzierte-volltexte.html" target="_blank" rel="noopener">www.zi.uzh.ch/de/staff/software-elearning/ai-tools-und-services.html</a></p>
+      <p class="source-note">UB Zürich, <em>KI und lizenzierte Volltexte</em> — <a href="https://www.ub.uzh.ch/de/literatur-suchen-nutzen/e-library-nutzen/ki-und-lizenzierte-volltexte.html" target="_blank" rel="noopener">www.ub.uzh.ch/de/literatur-suchen-nutzen/e-library-nutzen/ki-und-lizenzierte-volltexte.html</a></p>
     </section>
 
     <section>
@@ -278,7 +280,7 @@
       <pre><code class="language-bash">/sandbox</code></pre>
       <p>Isoliert nur <strong>Bash-Befehle</strong> (nicht Read/Edit/WebFetch/MCP).</p>
       <p style="font-size:0.75em">macOS: keine Zusatzinstallation nötig. Linux/WSL2: <code>bubblewrap</code> + <code>socat</code> nötig. Natives Windows: nicht unterstützt (nur über WSL2).</p>
-      <div class="callout callout-info"><span class="label">Realistisch betrachtet</span> Bei interaktiver Arbeit optional — Pflicht nur bei unbeaufsichtigten Läufen, deshalb oft ausgelassen.</div>
+      <div class="callout callout-info"><span class="label">Realistisch betrachtet</span> Bei interaktiver Arbeit optional — Empfohlen bei unbeaufsichtigten Läufen, deshalb oft ausgelassen.</div>
       <aside class="notes">Zielzeit: 1:15. Kurz zeigen, nicht vertiefen. macOS läuft sofort (Seatbelt eingebaut); Linux/WSL2 braucht `bubblewrap` + `socat` per Paketmanager; natives Windows wird nicht unterstützt, nur via WSL2. Wichtig: Sandbox deckt nur Bash ab, nicht Read/Edit/WebFetch/MCP.</aside>
     </section>
 
@@ -339,8 +341,8 @@
       <pre><code class="language-json">{
   "permissions": {
     "deny": [
-      "Bash(rm -rf:*)",
-      "Bash(git push --force:*)"
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)"
     ]
   }
 }</code></pre>
@@ -352,6 +354,7 @@
         Zielzeit: 4:00. Gemeinsam settings.json öffnen (kurz projektlokal vs. global erwähnen), die deny-Regeln eintragen.
         Vor dem Testen gemeinsam einen Wegwerf-Ordner anlegen (z. B. `mkdir /tmp/vibetest`) und NUR darauf `rm -rf` ausprobieren —
         nie auf echten Projekt-/Repo-Pfaden, falls die Regel doch nicht greift.
+        Wichtig: Pattern-Matching ist keine Garantie — Varianten wie `rm -fr`, `rm -r -f` oder `git push -f` werden von diesen Regeln nicht erfasst.
       </aside>
     </section>
 
@@ -365,19 +368,19 @@
 }</code></pre>
       <div class="callout callout-caution">
         <span class="label">Bekannter Bug</span>
-        <code>permissions.deny</code> greift in Einzelfällen nicht —
-        <a href="https://github.com/anthropics/claude-code/issues/11544" target="_blank" rel="noopener">GitHub Issue #11544</a>
+        <code>permissions.deny</code> wurde in Einzelfällen nicht durchgesetzt (Issue inzwischen geschlossen) —
+        <a href="https://github.com/anthropics/claude-code/issues/6631" target="_blank" rel="noopener">GitHub Issue #6631</a>
       </div>
       <p>Genau für solche Lücken gibt es eine zusätzliche Absicherungsebene: <strong>Hooks</strong> (nächste Folie).</p>
       <aside class="notes">
-        Zielzeit: 1:30. Kurzer Exkurs: Read(./.env) in die deny-Liste, warum Berechtigungsregeln allein nicht genügen. Bewusst als Cliffhanger enden: "was macht man gegen so eine Lücke?" → Überleitung zu Hooks.
+        Zielzeit: 1:30. Kurzer Exkurs: Read(./.env) in die deny-Liste, warum Berechtigungsregeln allein nicht genügen. Einschränkung: Read(./.env) gilt nur für das Read-Tool — ein Bash-Befehl wie `cat .env` wird davon nicht erfasst. Bewusst als Cliffhanger enden: "was macht man gegen so eine Lücke?" → Überleitung zu Hooks.
       </aside>
     </section>
 
     <section>
       <p class="block-tag">Block 2 · Sicherheit</p>
       <h2>Hooks — die Versicherung dahinter</h2>
-      <p>Mächtiger als reines Pattern-Matching — greift auch dort, wo <code>permissions.deny</code> gerade eben eine Lücke hatte.</p>
+      <p>Mächtiger als reines Pattern-Matching — greift auch dort, wo <code>permissions.deny</code> eine Lücke lassen kann.</p>
       <p>Beispiel: ein Hook könnte zusätzlich verhindern, dass <code>.env</code> versehentlich per <code>git add</code>/<code>commit</code> ins Repo gelangt.</p>
       <p><em>(Keine eigene Hook-Programmierung heute)</em></p>
       <aside class="notes">Zielzeit: 1:00. Direkt an den Bug aus der Vorfolie anknüpfen: "genau für Fälle, wo eine einfache Regel durchrutscht, gibt's Hooks als zusätzliche Prüfebene" — das macht in einem Satz klar, warum Hooks mächtiger sind. Das Git-Beispiel kurz anreißen (nicht vorführen) — liefert später den Anker für "Hooks als Bonus" im Recap.</aside>
@@ -438,7 +441,7 @@
 
     <section>
       <p class="block-tag">Block 3 · Skills</p>
-      <h2>Was ist eine Skill?</h2>
+      <h2>Was ist ein Skill?</h2>
       <p><code>SKILL.md</code> speichert <strong>wiederkehrendes Vorgehen</strong> dauerhaft — statt es jede Session neu zu erklären.</p>
       <p>Liegt unter <code>.claude/skills/&lt;name&gt;/SKILL.md</code> (projektweit) oder <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> (für alle Projekte).</p>
       <aside class="notes">Zielzeit: 2:00. Ablageort kurz erwähnen: projektlokal vs. global im Home-Verzeichnis — Parallele zu CLAUDE.md kommt in Block 4.</aside>
@@ -449,7 +452,7 @@
       <h2>Struktur einer SKILL.md</h2>
       <pre><code class="language-markdown">---
 name: skill-name
-description: Wann und wofür diese Skill greift
+description: Wann und wofür dieser Skill greift
 ---
 
 # Skill-Name
@@ -459,31 +462,29 @@ Deine Regeln und Urteilskriterien hier.</code></pre>
 
     <section>
       <p class="block-tag">Block 3 · Skills</p>
-      <h2>skill-creator: eine Skill, die Skills baut</h2>
-      <p><code>skill-creator</code> ist eine <strong>offizielle Anthropic-Skill</strong> — sie erstellt andere Skills interaktiv, per Rückfragen zum Anwendungsfall.</p>
+      <h2>skill-creator: ein Skill, der Skills baut</h2>
+      <p><code>skill-creator</code> ist ein <strong>offizieller Anthropic-Skill</strong> — er erstellt andere Skills interaktiv, per Rückfragen zum Anwendungsfall.</p>
       <p>Kommt nicht vorinstalliert, sondern als Plugin aus dem offiziellen Marketplace.</p>
-      <aside class="notes">Zielzeit: 1:00. Meta-Konzept kurz einordnen: eine Skill, die beim Skill-Bauen hilft, statt SKILL.md von Hand zu tippen.</aside>
+      <aside class="notes">Zielzeit: 1:00. Meta-Konzept kurz einordnen: ein Skill, der beim Skill-Bauen hilft, statt SKILL.md von Hand zu tippen.</aside>
     </section>
 
     <section>
       <p class="block-tag">Block 3 · Skills</p>
       <h2>🛠 Live: skill-creator installieren</h2>
-      <pre><code class="language-bash">/plugin install skill-creator@claude-plugins-official
-/reload-plugins</code></pre>
+      <pre><code class="language-bash">/plugin install skill-creator@claude-plugins-official</code></pre>
       <p class="subtitle">Falls Marketplace noch fehlt, vorher: <code>/plugin marketplace add anthropics/claude-plugins-official</code></p>
       <div class="callout callout-info">
         <span class="label">Anknüpfung Block 2</span>
         Genau das Prinzip von eben: nur vertrauenswürdige, offizielle Quellen einbinden.
       </div>
-      <p class="source-note">Quelle: offizielle Claude-Code-Doku — https://code.claude.com/docs/en/skills.md</p>
-      <aside class="notes">Zielzeit: 1:30. Live tippen. Falls reload-plugins wegen Prompt-Cache warnt: mit --force wiederholen.</aside>
+      <aside class="notes">Zielzeit: 1:30. Live tippen.</aside>
     </section>
 
     <section>
       <p class="block-tag">Block 3 · Skills</p>
       <h2>🛠 Live-Demo: Skill fürs Spielprojekt erzeugen</h2>
       <p>Kein eigener Slash-Befehl — einfach im Chat natürlichsprachlich anfragen:</p>
-      <pre><code class="language-text">"Erstelle mit skill-creator eine Skill fürs
+      <pre><code class="language-text">"Erstelle mit skill-creator einen Skill fürs
 Web-Spiel-Projekt: HTML/CSS/JS, Canvas-Konventionen,
 Dateistruktur, keine externen Abhängigkeiten."</code></pre>
       <ul>
@@ -526,7 +527,7 @@ Dateistruktur, keine externen Abhängigkeiten."</code></pre>
         Zielzeit: 2:15. Ablageort analog zu Skills: projektlokal vs. global im Home-Verzeichnis.
         Empfehlung ausführen: CLAUDE.md mischt Projekt-Blueprint (Struktur/Architektur) und Verhaltensnormen (Konventionen, Regeln) — beides gehört rein, nicht nur eines von beidem.
         Knapp halten (offizielle Empfehlung: unter 200 Zeilen), weil es bei jeder Session mitgeladen wird — lange Dateien kosten Kontext-Budget und werden schlechter befolgt.
-        Mehrstufige Anleitungen für einzelne Aufgaben gehören in eine Skill, nicht ins CLAUDE.md; Regeln, die nur für bestimmte Dateien gelten, gehören in `.claude/rules/`.
+        Mehrstufige Anleitungen für einzelne Aufgaben gehören in einen Skill, nicht ins CLAUDE.md; Regeln, die nur für bestimmte Dateien gelten, gehören in `.claude/rules/`.
         Quelle: offizielle Claude-Code-Doku zu CLAUDE.md/Memory.
       </aside>
     </section>
@@ -602,10 +603,10 @@ Dateistruktur, keine externen Abhängigkeiten."</code></pre>
         <li>Vibe Coding &amp; Harness erklären</li>
         <li>Institutionellen Status + Datenklassifizierung einordnen</li>
         <li>Permissions/Hooks einordnen, gefährliche Befehle blockieren</li>
-        <li>Umsichtiger Umgang mit <code>.env</code> (inkl. chmod-Grenzen)</li>
+        <li>Umsichtiger Umgang mit <code>.env</code> und Credentials</li>
         <li>Skill an einem Beispiel erklären</li>
         <li>Rolle von CLAUDE.md erklären</li>
-        <li>Eigenständig ein Web-Spiel umgesetzt</li>
+        <li>Eigenständig ein Web-Spiel umsetzen</li>
       </ul>
       <aside class="notes">Zielzeit: 2:00. Lernziele nochmal zeigen, kurz gegenchecken.</aside>
     </section>
